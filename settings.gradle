@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "G5-RefugeeAid"
