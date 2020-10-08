@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "613507475837",
+    "firebase_url": "https://g5-refugeeaid.firebaseio.com",
+    "project_id": "g5-refugeeaid",
+    "storage_bucket": "g5-refugeeaid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613507475837:android:88464316e0910dc74b4414",
+        "android_client_info": {
+          "package_name": "com.comp313002.team3.g5refugeeaid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613507475837-a55g6olj63top5ur1uktlnbcrksdicru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwmoziM8SJMKpu49GEDnQrp_CWHuduOys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613507475837-a55g6olj63top5ur1uktlnbcrksdicru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
