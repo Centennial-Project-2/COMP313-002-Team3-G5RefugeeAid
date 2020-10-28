@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.comp313002.team3.g5refugeeaid.databinding.ActivityUserLoginBinding;
+import com.comp313002.team3.models.G5UserData;
+import com.comp313002.team3.models.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,6 +20,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthMultiFactorException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.MultiFactorResolver;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserLoginActivity extends BaseActivity implements
         View.OnClickListener {
@@ -28,7 +35,11 @@ public class UserLoginActivity extends BaseActivity implements
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
+    private G5UserData userData;
     // [END declare_auth]
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mDatabase = database.getReference();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +66,43 @@ public class UserLoginActivity extends BaseActivity implements
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            mDatabase.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // Get user value
+                            G5UserData user = dataSnapshot.getValue(G5UserData.class);
+
+                            // [START_EXCLUDE]
+                            if (user == null) {
+                                // User is null, error out
+                                Log.e(TAG, "User " + currentUser.getUid() + " is unexpectedly null");
+                                Toast.makeText(UserLoginActivity.this,
+                                        "Error: could not fetch user.",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Write new post
+                                userData = user;
+                            }
+
+                            // Finish this Activity, back to the stream
+                            //setEditingEnabled(true);
+                            //finish();
+                            // [END_EXCLUDE]
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                            // [START_EXCLUDE]
+                            //setEditingEnabled(true);
+                            // [END_EXCLUDE]
+                        }
+                    });
+
+        }
         updateUI(currentUser);
     }
     // [END on_start_check_user]
@@ -77,6 +124,10 @@ public class UserLoginActivity extends BaseActivity implements
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            // Add UserData in database
+                            userData = new G5UserData(user.getEmail(), UserType.ADMIN);
+                            mDatabase.child("users").child(user.getUid()).setValue(userData);
+
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
