@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".SponsorSignUpActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sign up as Sponsor"
+            android:layout_marginBottom="50dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/blood_red"
+            android:layout_margin="1dp"
+            android:padding="10dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="First Name"
+            android:gravity="center"
+            android:id="@+id/txt_f_name_s"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="Last Name"
+            android:id="@+id/txt_l_name_s"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="Email"
+            android:id="@+id/txt_email_s"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="Phone Number"
+            android:id="@+id/txt_phone_number_s"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="password"
+            android:id="@+id/txt_password_s"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btnbackground"
+            android:textColor="@color/colorAccent"
+            android:hint="Conform Password"
+            android:id="@+id/txt_conform_password_s"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColorHint="@color/colorAccent"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Terms"
+            android:id="@+id/checkbox_term_s"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:textAppearance="?android:textAppearanceMedium"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:text="Sumit "
+                android:id="@+id/btn_submit_s"
+                android:textColor="@color/colorAccent"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:background="@color/colorAccent"
+
+                />
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+                android:text="Cancel"
+                android:id="@+id/btn_cancel__s"
+                android:textColor="@color/colorAccent"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:background="@color/blood_red"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:text="Sign In "
+            android:id="@+id/sign_in_s"
+            android:textColor="@color/colorAccent"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:background="@color/blood_red"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>
