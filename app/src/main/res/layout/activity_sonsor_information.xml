@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
+    android:background="@color/grey_500"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".SonsorInformationActivity"
     tools:deviceIds="wear">
