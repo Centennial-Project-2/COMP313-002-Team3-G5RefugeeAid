@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+<!--    <color name="colorPrimary">#6200EE</color>-->
+<!--    <color name="colorPrimaryDark">#3700B3</color>-->
+<!--    <color name="colorAccent">#03DAC5</color>-->
 
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
+
+    <color name="colorPrimary">#D90429</color>
+    <color name="colorPrimaryDark">#AF0220</color>
+    <color name="colorAccent">#fff</color>
+
+    <!--User defined colors-->
+    <color name="white">#FFFFFF</color>
+    <color name="Cultured">#f5f3f4</color>
+    <color name="Silver_Chalice">#B1A7A6</color>
+    <color name= "blood_red">#660708</color>
+    <color name="orange">#e16036</color>
+    <color name="yellow">#ef233c</color>
+    <!-- New colors from prototypes -->
+    <color name="midnight_blue">#061551</color>
+    <color name="dark_slate_blue">#1e3db7</color>
+    <color name="white_smoke">#f2f2f2</color>
+    <color name="peru">#e18f43</color>
+    <!--text colors-->
+    <color name="silver">#c4c4c4</color>
+    <color name="light_slate_gray">#7b84ac</color>
+    <color name="dark_slate_gray">#3c456a</color>
+    <color name="dark_gray">#979797</color>
+    <color name="gray">#7c7c7c</color>
+
 </resources>

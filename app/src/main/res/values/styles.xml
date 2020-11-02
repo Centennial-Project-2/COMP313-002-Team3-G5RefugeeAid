@@ -2,6 +2,12 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/dark_slate_blue</item>
+        <item name="colorPrimaryDark">@color/midnight_blue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme2" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -36,6 +42,7 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+
     <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
         <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
         <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>
@@ -45,5 +52,64 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">36sp</item>
     </style>
+
+    <style name="EditText01" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:gravity">start</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/txtbox_background01</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="Button_Rect_Primary" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/btn_back_rect_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Button_Rounded_Alt" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/btn_back_round_alt</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dark_slate_gray</item>
+    </style>
+
+    <style name="Button_Rect_Alt" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/btn_back_rect_alt</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dark_slate_gray</item>
+    </style>
+
+    <style name="Button_Rounded_Primary" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/btn_back_round_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
 
 </resources>
