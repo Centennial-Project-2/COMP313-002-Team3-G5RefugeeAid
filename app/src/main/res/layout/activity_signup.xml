@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".UserLoginActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Sign up as a new user"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/dark_slate_gray"
+            android:layout_margin="1dp"
+            android:padding="10dp"
+            android:gravity="center"/>
+
+        <Spinner
+            style="@style/EditText01"
+            android:id="@+id/userType" />
+
+        <EditText
+            style="@style/EditText01"
+            android:hint="*First Name"
+            android:id="@+id/txtFirstName"/>
+
+        <EditText
+            style="@style/EditText01"
+            android:hint="*Last Name"
+            android:id="@+id/txtLastName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth:"
+            android:textColor="@color/dark_slate_gray"
+
+            android:paddingLeft="20dp"
+            android:gravity="start"/>
+
+        <DatePicker
+            android:id="@+id/bDayPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="132dp"
+            android:layout_margin="0dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
+<!--        <EditText-->
+<!--            style="@style/EditText01"-->
+<!--            android:hint="*Nationality"-->
+<!--            android:id="@+id/txt_nationality"/>-->
+
+        <EditText
+            style="@style/EditText01"
+            android:hint="*Email"
+            android:id="@+id/txtEmail"/>
+
+<!--        <EditText-->
+<!--            style="@style/EditText01"-->
+<!--            android:hint="*Phone Number"-->
+<!--            android:id="@+id/txt_phone_number"/>-->
+
+<!--        <EditText-->
+<!--            style="@style/EditText01"-->
+<!--            android:hint="*UNHCR Number"-->
+<!--            android:id="@+id/txt_un_number"/>-->
+
+        <EditText
+            style="@style/EditText01"
+            android:hint="*Password"
+            android:id="@+id/txtPassword"/>
+
+        <EditText
+            style="@style/EditText01"
+            android:hint="Confirm Password"
+            android:id="@+id/txtConfirmPassword"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/status"
+            android:layout_height="50dp"
+            android:textColor="@color/light_slate_gray"
+            android:layout_margin="1dp"
+            android:padding="10dp"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_submit"
+                style="@style/Button_Rect_Primary"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="Submit"
+                android:textSize="14dp"
+                app:backgroundTint="@null" />
+            <Button
+                app:backgroundTint="@null"
+                style="@style/Button_Rect_Alt"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:text="Cancel"
+                android:textSize="14dp"
+                android:id="@+id/btn_cancel" />
+
+
+        </LinearLayout>
+        <Button
+            app:backgroundTint="@null"
+            style="@style/Button_Rounded_Primary"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Ok"
+            android:textSize="14dp"
+            android:id="@+id/btn_Confirm" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

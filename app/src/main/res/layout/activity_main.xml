@@ -5,20 +5,112 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:gravity="center"
     tools:context=".MainActivity">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"/>
 
-    <Button
-        android:id="@+id/enterButton"
-        android:layout_width="130dp"
-        android:layout_height="69dp"
-        android:layout_centerInParent="true"
-        android:text="Enter"
-
-        android:theme="@style/ThemeOverlay.MyDarkButton" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="@color/midnight_blue"
+        android:layout_margin="10dp"
+        android:textSize="18dp"
+        android:text="G5 Members Login!" />
+<!--    <Button-->
+<!--        app:backgroundTint="@null"-->
+<!--        style="@style/Button_Rect_Primary"-->
+<!--        android:id="@+id/enterButton"-->
+<!--        android:text="Enter"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<!--        <Button-->
+<!--            app:backgroundTint="@null"-->
+<!--            style="@style/Button_Rect_Primary"-->
+<!--            android:text="Sign Up as Refugee"-->
+<!--            android:id="@+id/btn_sign_up_refugee"/>-->
+
+<!--        <Button-->
+<!--            app:backgroundTint="@null"-->
+<!--            style="@style/Button_Rect_Primary"-->
+<!--            android:text="Sign Up as Sponsor "-->
+<!--            android:id="@+id/btn_sign_up_sponsor" />-->
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="298dp"
+            android:layout_height="269dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/g5_logo" />
+        <LinearLayout
+            android:id="@+id/signInBox"
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/loginStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+            <EditText
+                style="@style/EditText01"
+                android:hint="*Email"
+                android:id="@+id/txtEmail"/>
+
+            <EditText
+                style="@style/EditText01"
+                android:hint="*Password"
+                android:id="@+id/txtPassword"/>
+            <Button
+                app:backgroundTint="@null"
+                style="@style/Button_Rect_Primary"
+                android:text="Sign In"
+                android:id="@+id/btnSignInSubmit"/>
+            <Button
+                app:backgroundTint="@null"
+                style="@style/Button_Rect_Alt"
+                android:text="Cancel"
+                android:id="@+id/btnCancelSignIn"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/signUpBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:textSize="14dp"
+                app:backgroundTint="@null"
+                style="@style/Button_Rect_Alt"
+                android:text="Sign Up"
+                android:id="@+id/btnSignUp" />
+
+            <Button
+                app:backgroundTint="@null"
+                style="@style/Button_Rect_Alt"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:textSize="14dp"
+                android:text="Sign In"
+                android:id="@+id/btnSignIn"/>
+        </LinearLayout>
 
 
         <TextView
