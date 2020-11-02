@@ -67,14 +67,14 @@ public class SignUpActivity extends BaseActivity implements
         Intent intent;
         int i = v.getId();
         if (i == R.id.btn_cancel) {
-            intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            finish();
         } else if (i == R.id.btn_Confirm) {
             // go to dashboard
             intent = new Intent(this, DashboardActivity.class);
             if(fireBaseUser != null){
                 intent.putExtra("email", fireBaseUser.getEmail());
                 startActivity(intent);
+                finish();
             }
 
         } else if (i == R.id.btn_submit) {

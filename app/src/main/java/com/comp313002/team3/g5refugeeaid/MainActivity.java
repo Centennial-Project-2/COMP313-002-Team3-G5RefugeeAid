@@ -104,6 +104,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                             intent.putExtra("email", user.getEmail());
                             startActivity(intent);
+                            mBinding.txtPassword.setText("");
+                            mBinding.txtEmail.setText("");
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

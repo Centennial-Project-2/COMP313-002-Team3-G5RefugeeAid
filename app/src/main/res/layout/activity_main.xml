@@ -53,11 +53,13 @@
             android:layout_width="298dp"
             android:layout_height="269dp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/g5_logo" />
+
         <LinearLayout
             android:id="@+id/signInBox"
-            android:layout_margin="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
@@ -74,6 +76,7 @@
 
             <EditText
                 style="@style/EditText01"
+                android:inputType="textPassword"
                 android:hint="*Password"
                 android:id="@+id/txtPassword"/>
             <Button
@@ -81,11 +84,13 @@
                 style="@style/Button_Rect_Primary"
                 android:text="Sign In"
                 android:id="@+id/btnSignInSubmit"/>
+
             <Button
-                app:backgroundTint="@null"
+                android:id="@+id/btnCancelSignIn"
                 style="@style/Button_Rect_Alt"
+                android:layout_height="wrap_content"
                 android:text="Cancel"
-                android:id="@+id/btnCancelSignIn"/>
+                app:backgroundTint="@null" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/signUpBox"
@@ -111,12 +116,6 @@
                 android:text="Sign In"
                 android:id="@+id/btnSignIn"/>
         </LinearLayout>
-
-
-        <TextView
-            android:layout_width="306dp"
-            android:layout_height="50dp"
-            android:text="G5 Members Login!" />
 
     </LinearLayout>
 

@@ -87,11 +87,13 @@
 
         <EditText
             style="@style/EditText01"
+            android:inputType="textPassword"
             android:hint="*Password"
             android:id="@+id/txtPassword"/>
 
         <EditText
             style="@style/EditText01"
+            android:inputType="textPassword"
             android:hint="Confirm Password"
             android:id="@+id/txtConfirmPassword"/>
         <TextView
