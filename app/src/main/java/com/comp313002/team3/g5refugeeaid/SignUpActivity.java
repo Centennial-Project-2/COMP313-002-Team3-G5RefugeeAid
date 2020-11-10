@@ -84,11 +84,11 @@ public class SignUpActivity extends BaseActivity implements
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-//        if(position == 0){
-//
-//        } else {
-//
-//        }
+        if(position == 0){
+            mBinding.txtUnNumber.setVisibility(View.VISIBLE);
+        } else {
+            mBinding.txtUnNumber.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -117,9 +117,22 @@ public class SignUpActivity extends BaseActivity implements
                             //check for user type selection
                             if(mBinding.userType.getSelectedItemPosition() == 0){
                                 userData = new G5UserData(fireBaseUser.getEmail(), UserType.REFUGEE);
+                                if(!TextUtils.isEmpty(mBinding.txtUnNumber.getText().toString())){
+                                    userData.unNumber = mBinding.txtUnNumber.getText().toString();
+                                }
                             } else {
                                 userData = new G5UserData(fireBaseUser.getEmail(), UserType.SPONSOR);
                             }
+
+                            userData.fName = mBinding.txtFirstName.getText().toString();
+                            userData.lName = mBinding.txtLastName.getText().toString();
+                            if(!TextUtils.isEmpty(mBinding.txtPhoneNumber.getText().toString())){
+                                userData.phoneNumber = mBinding.txtPhoneNumber.getText().toString();
+                            }
+                            if(!TextUtils.isEmpty(mBinding.txtNationality.getText().toString())){
+                                userData.nationality = mBinding.txtNationality.getText().toString();
+                            }
+
                             mDatabase.child("users").child(fireBaseUser.getUid()).setValue(userData);
 
                             updateUI(fireBaseUser);
@@ -142,9 +155,25 @@ public class SignUpActivity extends BaseActivity implements
     private boolean validateForm() {
         boolean valid = true;
 
+        String fName = mBinding.txtFirstName.getText().toString();
+        if (TextUtils.isEmpty(fName)) {
+            mBinding.txtFirstName.setError("First Name Required.");
+            valid = false;
+        } else {
+            mBinding.txtFirstName.setError(null);
+        }
+
+        String lName = mBinding.txtLastName.getText().toString();
+        if (TextUtils.isEmpty(lName)) {
+            mBinding.txtLastName.setError("Last Name Required.");
+            valid = false;
+        } else {
+            mBinding.txtLastName.setError(null);
+        }
+
         String email = mBinding.txtEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            mBinding.txtEmail.setError("Required.");
+            mBinding.txtEmail.setError("Email Required.");
             valid = false;
         } else {
             mBinding.txtEmail.setError(null);
@@ -152,10 +181,21 @@ public class SignUpActivity extends BaseActivity implements
 
         String password = mBinding.txtPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            mBinding.txtPassword.setError("Required.");
+            mBinding.txtPassword.setError("Password Required.");
             valid = false;
         } else {
             mBinding.txtPassword.setError(null);
+        }
+
+        String confirmPassword = mBinding.txtConfirmPassword.getText().toString();
+        if (TextUtils.isEmpty(confirmPassword)) {
+            mBinding.txtConfirmPassword.setError("Confirm Password Required.");
+            valid = false;
+        } else if (!confirmPassword.equals(password)) {
+            mBinding.txtConfirmPassword.setError("Please enter password again.");
+            valid = false;
+        }else {
+            mBinding.txtConfirmPassword.setError(null);
         }
 
         return valid;
