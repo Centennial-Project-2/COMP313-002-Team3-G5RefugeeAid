@@ -22,7 +22,6 @@ public class DashboardActivity extends BaseActivity implements  View.OnClickList
         super.onCreate(savedInstanceState);
         mBinding = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
-        //setProgressBar(mBinding.progressBar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         mBinding.label01.setText("Hello!");

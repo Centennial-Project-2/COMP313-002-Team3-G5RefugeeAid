@@ -29,13 +29,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private static final String TAG = "Main";
 
     private ActivityMainBinding mBinding;
-    // [START declare_auth]
     private FirebaseAuth mAuth;
-    private G5UserData userData;
-    // [END declare_auth]
-
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference mDatabase = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         setProgressBar(mBinding.progressBar);
-
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
 
         mBinding.signInBox.setVisibility(View.GONE);
 
@@ -64,7 +56,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnSignUp:
                 intent = new Intent(this, SignUpActivity.class);
                 startActivity(intent);
-
                 break;
             case R.id.btnSignIn:
                 mBinding.signInBox.setVisibility(View.VISIBLE);
@@ -76,7 +67,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.btnSignInSubmit:
                 signIn(mBinding.txtEmail.getText().toString(), mBinding.txtPassword.getText().toString());
-
                 break;
             default:
                 break;
@@ -109,7 +99,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(MainActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
 

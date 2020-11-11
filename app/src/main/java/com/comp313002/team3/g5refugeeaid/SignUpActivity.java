@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class SignUpActivity extends BaseActivity implements
         View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -114,7 +115,7 @@ public class SignUpActivity extends BaseActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
                             fireBaseUser = mAuth.getCurrentUser();
                             // Add UserData in database
-                            //check for user type selection
+                            // check for user type selection and create user data accordingly
                             if(mBinding.userType.getSelectedItemPosition() == 0){
                                 userData = new G5UserData(fireBaseUser.getEmail(), UserType.REFUGEE);
                                 if(!TextUtils.isEmpty(mBinding.txtUnNumber.getText().toString())){
@@ -206,20 +207,12 @@ public class SignUpActivity extends BaseActivity implements
         if (user != null) {
             mBinding.status.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
-            //mBinding.detail.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
             mBinding.btnSubmit.setVisibility(View.GONE);
             mBinding.btnCancel.setVisibility(View.GONE);
             mBinding.btnConfirm.setVisibility(View.VISIBLE);
-
-//            if (user.isEmailVerified()) {
-//                mBinding.verifyEmailButton.setVisibility(View.GONE);
-//            } else {
-//                mBinding.verifyEmailButton.setVisibility(View.VISIBLE);
-//            }
         } else {
             mBinding.status.setText(R.string.signed_out);
-            //mBinding.detail.setText(null);
 
             mBinding.btnSubmit.setVisibility(View.VISIBLE);
             mBinding.btnCancel.setVisibility(View.VISIBLE);

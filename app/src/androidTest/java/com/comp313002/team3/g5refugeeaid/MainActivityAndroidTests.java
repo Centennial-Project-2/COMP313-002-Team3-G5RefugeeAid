@@ -72,7 +72,7 @@ public class MainActivityAndroidTests {
         onView(withId(R.id.btnSignIn)).perform(click());
         onView(withId(R.id.btnCancelSignIn)).perform(click());
 
-        // Check if sign in box is shown.
+        // Check if sign in box is hidden.
         onView(withId(R.id.txtEmail)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
         onView(withId(R.id.txtPassword)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
         onView(withId(R.id.btnSignInSubmit)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));

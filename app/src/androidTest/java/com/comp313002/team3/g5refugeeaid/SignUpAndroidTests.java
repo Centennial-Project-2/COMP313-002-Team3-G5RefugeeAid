@@ -57,11 +57,9 @@ public class SignUpAndroidTests {
     public void createRefugeeUser_sameActivity() {
         // Type text and then press the button.
         onData(allOf(is(instanceOf(String.class)))).atPosition(0).perform(click());
-
         onView(withText("I am a Refugee")).inRoot(isPlatformPopup()).perform(click());
 
-        ///onView(withText("I am a Refugee"))
-                //.check(matches(withText(containsString("I am a Refugee"))));
+        // filling the form
         onView(withId(R.id.txtFirstName)).perform(typeText(STRING_TO_BE_TYPED[0]));
         onView(withId(R.id.txtLastName)).perform(typeText(STRING_TO_BE_TYPED[1]));
         onView(withId(R.id.bDayPicker)).perform(PickerActions.setDate(2001, 6, 30));
@@ -73,6 +71,8 @@ public class SignUpAndroidTests {
         onView(withId(R.id.txtConfirmPassword)).perform(scrollTo(), typeText(STRING_TO_BE_TYPED[6]), closeSoftKeyboard());
         onView(withId(R.id.btn_submit)).perform(scrollTo(), click());
         SystemClock.sleep(3500);
+
+        // Check if confirm button show up after creating user
         onView(withId(R.id.btn_Confirm)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 }
