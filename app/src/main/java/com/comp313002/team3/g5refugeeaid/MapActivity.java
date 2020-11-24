@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -52,10 +54,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
     }
+
+    //to change the default possession of the camera
+    private void defaultCamLocation(){
+        LatLng latLng= new LatLng(43.6445, -79.39);
+        CameraUpdate cameraUpdateFactory = CameraUpdateFactory.newLatLngZoom(latLng, 8);
+        mGoogleMap.moveCamera(cameraUpdateFactory);
+
+
+    }
     @Override
     public void onMapReady(GoogleMap map) {
         mGoogleMap = map;
-        map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Where"));
+        defaultCamLocation();
+        map.addMarker(new MarkerOptions().position(new LatLng(43.641, -79.39002)).title("Where"));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -65,6 +77,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         map.setMyLocationEnabled(true);
         Log.d("MaDebug", "Google map is running(1)");
     }
+
+
     private void initGoogleMap(Bundle savedInstanceState) {
         mMapView = findViewById(R.id.mapView);
         Bundle mapViewBundle = null;
@@ -82,11 +96,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
+
     private void initGoogleMapServices() {
         if (isServicesOn()) {
+            //if permissions are enable will run
             if (checkLocationPermissions()) {
                 Toast.makeText(MapActivity.this, "Map is Ready", Toast.LENGTH_SHORT).show();
             } else {
+                //will send request to enable services on physical device
                 onRequestPermissionsResult();
             }
         }
@@ -107,12 +124,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+    //checking play services on the device
     private boolean isServicesOn() {
+        //getting instance of googleApiAvailability
         GoogleApiAvailability googleApi = GoogleApiAvailability.getInstance();
         int result = googleApi.isGooglePlayServicesAvailable(this);
+        //if the result is success will return ture
         if (result == ConnectionResult.SUCCESS) {
             return true;
+        //check if the problem is resolvable or not (does the device support google play services)
         } else if (googleApi.isUserResolvableError(result)) {
+            //promote user to allow or install play store services
             Dialog dialog = googleApi.getErrorDialog(this, result, PLYA_SERVICES_ERROR_CODE, new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface task) {
@@ -153,7 +175,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         final AlertDialog alert = builder.create();
         alert.show();
     }
+
     //checking for gps in device
+    /*
     public  boolean isMapEabled(){
         final LocationManager manager =(LocationManager)getSystemService(Context.LOCATION_SERVICE);
         if(!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -163,6 +187,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return true;
 
     }
+
+     */
 
 
 
