@@ -33,7 +33,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 <!--        <Button-->
@@ -95,7 +95,7 @@
         <LinearLayout
             android:id="@+id/signUpBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
             <Button
@@ -117,6 +117,29 @@
                 android:id="@+id/btnSignIn"/>
         </LinearLayout>
 
+
+
+
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btnmap"
+            style="@style/Button_Rect_Primary"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:onClick="vewMap"
+            android:text="Google Map"
+            android:textSize="14dp"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
 
 </LinearLayout>

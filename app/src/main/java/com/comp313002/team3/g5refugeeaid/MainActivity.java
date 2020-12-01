@@ -2,8 +2,14 @@ package com.comp313002.team3.g5refugeeaid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,6 +22,9 @@ import android.widget.Toast;
 import com.comp313002.team3.g5refugeeaid.databinding.ActivityMainBinding;
 import com.comp313002.team3.g5refugeeaid.databinding.ActivityUserLoginBinding;
 import com.comp313002.team3.models.G5UserData;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,6 +39,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private ActivityMainBinding mBinding;
     private FirebaseAuth mAuth;
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +62,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mBinding.btnCancelSignIn.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -68,6 +88,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btnSignInSubmit:
                 signIn(mBinding.txtEmail.getText().toString(), mBinding.txtPassword.getText().toString());
                 break;
+
+
+
             default:
                 break;
         }
@@ -135,4 +158,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         return valid;
     }
+
+    public void vewMap(View view){
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
+
 }
