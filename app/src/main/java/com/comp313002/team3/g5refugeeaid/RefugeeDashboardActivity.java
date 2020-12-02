@@ -65,10 +65,6 @@ public class RefugeeDashboardActivity extends BaseActivity implements  View.OnCl
         sponsors = new ArrayList<G5UserData>();
 
         mUserReference = FirebaseDatabase.getInstance().getReference().child("users");
-//        firebase.database().ref('MyList/rc99').once('value').then(function(snapshot) {
-//            for (record in snapshot.val()) { //unordered records, see comment
-//                document.write(record)
-//       ...
 
         Recycler_View_Adapter adapter = new Recycler_View_Adapter(sponsors, getApplication());
         mBinding.recycleView.setAdapter(adapter);
@@ -85,7 +81,6 @@ public class RefugeeDashboardActivity extends BaseActivity implements  View.OnCl
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                sponsors = new ArrayList<G5UserData>();
                 // Get Post object and use the values to update the UI
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     G5UserData userData =snapshot.getValue(G5UserData.class);
@@ -93,14 +88,9 @@ public class RefugeeDashboardActivity extends BaseActivity implements  View.OnCl
                         sponsors.add(userData);
                     }
                 }
-
+                //populate results into list
                 Recycler_View_Adapter adapter = new Recycler_View_Adapter(sponsors, getApplication());
                 mBinding.recycleView.setAdapter(adapter);
-                // [START_EXCLUDE]
-                //binding.postAuthorLayout.postAuthor.setText(post.author);
-                //binding.postTextLayout.postTitle.setText(post.title);
-                //binding.postTextLayout.postBody.setText(post.body);
-                // [END_EXCLUDE]
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -117,10 +107,6 @@ public class RefugeeDashboardActivity extends BaseActivity implements  View.OnCl
 
         // Keep copy of post listener so we can remove it when app stops
         mUserListener = userListener;
-
-        // Listen for comments
-        //mAdapter = new CommentAdapter(this, mCommentsReference);
-        //binding.recyclerPostComments.setAdapter(mAdapter);
     }
 
     @Override

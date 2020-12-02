@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.comp313002.team3.g5refugeeaid.databinding.ActivityMainBinding;
 import com.comp313002.team3.g5refugeeaid.models.G5UserData;
 import com.comp313002.team3.g5refugeeaid.models.UserType;
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,14 +26,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private static final String TAG = "Main";
-    private static final int RC_SIGN_IN = 1;
-    private static final String ANONYMOUS = "Anonymous" ;
 
     private ActivityMainBinding mBinding;
 
@@ -67,14 +62,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         mAuth = FirebaseAuth.getInstance();
 
-
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     // user signed in
-
                     onSignedInInitialize(user);
                 } else {
                     onSignedOutCleanUp();
@@ -84,7 +77,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void onSignedOutCleanUp() {
-        mUsername = ANONYMOUS;
     }
 
     private void onSignedInInitialize(FirebaseUser user) {
@@ -117,8 +109,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             }
         };
 
-        // Add value event listener to the post
-        // [START post_value_event_listener]
+        // Add value event listener to the userData
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -126,11 +117,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 // Get Post object and use the values to update the UI
                 userData =dataSnapshot.getValue(G5UserData.class);
 
-                // [START_EXCLUDE]
-                //binding.postAuthorLayout.postAuthor.setText(post.author);
-                //binding.postTextLayout.postTitle.setText(post.title);
-                //binding.postTextLayout.postBody.setText(post.body);
-                // [END_EXCLUDE]
                 if(userData != null){
                     goToDashboard();
                 }
@@ -146,16 +132,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             }
         };
 
+        // assign database reference fort userData
         mUserReference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         mUserReference.addValueEventListener(userListener);
-        // [END post_value_event_listener]
 
         // Keep copy of post listener so we can remove it when app stops
         mUserListener = userListener;
-
-        // Listen for comments
-        //mAdapter = new CommentAdapter(this, mCommentsReference);
-        //binding.recyclerPostComments.setAdapter(mAdapter);
 
     }
 
@@ -192,8 +174,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         intent.putExtra("email", user.getEmail());
         startActivity(intent);
         finish();
-        //mBinding.txtPassword.setText("");
-        //mBinding.txtEmail.setText("");
     }
 
     private void signIn(String email, String password) {
@@ -201,7 +181,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         if (!validateForm()) {
             return;
         }
-
         showProgressBar();
 
         // [START sign_in_with_email]
@@ -218,7 +197,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                             Toast.makeText(MainActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }
-
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
                             mBinding.loginStatus.setText(R.string.auth_failed);
@@ -265,9 +243,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         if (mUserListener != null) {
             mUserReference.removeEventListener(mUserListener);
         }
-
-        // Clean up comments listener
-        //mAdapter.cleanupListener();
     }
 
     @Override

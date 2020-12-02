@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 class View_Holder extends RecyclerView.ViewHolder {
 
     CardView cv;
-    TextView title;
-    TextView description;
+    TextView fName;
+    TextView lName;
     //ImageView imageView;
 
     public View_Holder(@NonNull View itemView) {
         super(itemView);
         cv = (CardView) itemView.findViewById(R.id.cardView);
-        title = (TextView) itemView.findViewById(R.id.title);
-        description = (TextView) itemView.findViewById(R.id.description);
+        fName = (TextView) itemView.findViewById(R.id.firstName);
+        lName = (TextView) itemView.findViewById(R.id.lastName);
         //imageView = (ImageView) itemView.findViewById(R.id.imageView);
     }
 }

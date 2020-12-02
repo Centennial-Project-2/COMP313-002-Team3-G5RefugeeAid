@@ -65,10 +65,6 @@ public class SponsorDashboardActivity extends BaseActivity implements View.OnCli
         refugees = new ArrayList<G5UserData>();
 
         mUserReference = FirebaseDatabase.getInstance().getReference().child("users");
-//        firebase.database().ref('MyList/rc99').once('value').then(function(snapshot) {
-//            for (record in snapshot.val()) { //unordered records, see comment
-//                document.write(record)
-//       ...
 
         Recycler_View_Adapter adapter = new Recycler_View_Adapter(refugees, getApplication());
         mBinding.recycleView.setAdapter(adapter);
@@ -96,11 +92,6 @@ public class SponsorDashboardActivity extends BaseActivity implements View.OnCli
 
                 Recycler_View_Adapter adapter = new Recycler_View_Adapter(refugees, getApplication());
                 mBinding.recycleView.setAdapter(adapter);
-                // [START_EXCLUDE]
-                //binding.postAuthorLayout.postAuthor.setText(post.author);
-                //binding.postTextLayout.postTitle.setText(post.title);
-                //binding.postTextLayout.postBody.setText(post.body);
-                // [END_EXCLUDE]
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -118,9 +109,6 @@ public class SponsorDashboardActivity extends BaseActivity implements View.OnCli
         // Keep copy of post listener so we can remove it when app stops
         mUserListener = userListener;
 
-        // Listen for comments
-        //mAdapter = new CommentAdapter(this, mCommentsReference);
-        //binding.recyclerPostComments.setAdapter(mAdapter);
     }
 
     @Override

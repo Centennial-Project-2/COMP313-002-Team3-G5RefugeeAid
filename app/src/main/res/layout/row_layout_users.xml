@@ -25,21 +25,21 @@
 <!--            android:layout_marginRight="16dp" />-->
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageView"
-            android:text="Title"
+            android:text="FirstName"
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/lastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/firstName"
             android:layout_toRightOf="@+id/imageView"
-            android:text="Description" />
+            android:text="LastName" />
 
     </RelativeLayout>
 
