@@ -1,4 +1,4 @@
-package com.comp313002.team3.models;
+package com.comp313002.team3.g5refugeeaid.models;
 
 import java.util.Date;
 
