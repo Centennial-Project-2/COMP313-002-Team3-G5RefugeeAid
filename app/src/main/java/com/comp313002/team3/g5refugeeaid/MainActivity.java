@@ -37,7 +37,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private DatabaseReference mUserReference ;
     private FirebaseUser user;
-    private String mUsername;
 
     private FirebaseAuth mAuth;
     private ValueEventListener mUserListener;

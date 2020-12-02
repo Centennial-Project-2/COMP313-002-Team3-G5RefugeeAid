@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,10 +33,16 @@ class Recycler_View_Adapter extends RecyclerView.Adapter<View_Holder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull View_Holder holder, int position) {
+    public void onBindViewHolder(@NonNull View_Holder holder, final int position) {
         // populate the current row on the RecyclerView
         holder.fName.setText(list.get(position).fName);
         holder.lName.setText(list.get(position).lName);
+        holder.btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, list.get(position).fName, Toast.LENGTH_SHORT).show();
+            }
+        });
         //holder.imageView.setImageResource(list.get(position).hashCode());
 
         //animate(holder);

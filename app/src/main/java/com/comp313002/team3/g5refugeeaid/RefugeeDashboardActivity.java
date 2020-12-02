@@ -51,7 +51,6 @@ public class RefugeeDashboardActivity extends BaseActivity implements  View.OnCl
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        mBinding.label01.setText("Hello!");
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
