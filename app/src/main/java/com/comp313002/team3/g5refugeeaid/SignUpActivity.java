@@ -65,15 +65,12 @@ public class SignUpActivity extends BaseActivity implements
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, RefugeeDashboardActivity.class);;
+        Intent intent = new Intent(this, DashboardActivity.class);;
         int i = v.getId();
         if (i == R.id.btn_cancel) {
             finish();
         } else if (i == R.id.btn_Confirm) {
             // go to dashboard
-            if(userData.userType == UserType.REFUGEE){
-                intent = new Intent(this, SponsorDashboardActivity.class);
-            }
             if(fireBaseUser != null){
                 intent.putExtra("email", fireBaseUser.getEmail());
                 startActivity(intent);

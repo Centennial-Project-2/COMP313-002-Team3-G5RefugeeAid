@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.comp313002.team3.g5refugeeaid.databinding.ActivityMainBinding;
 import com.comp313002.team3.g5refugeeaid.models.G5UserData;
-import com.comp313002.team3.g5refugeeaid.models.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -166,11 +165,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void goToDashboard(){
-        Intent intent = new Intent(MainActivity.this, RefugeeDashboardActivity.class);
-        if(userData.userType == UserType.SPONSOR){
-            intent = new Intent(MainActivity.this, SponsorDashboardActivity.class);
-        }
-        intent.putExtra("email", user.getEmail());
+        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+
         startActivity(intent);
         finish();
     }
