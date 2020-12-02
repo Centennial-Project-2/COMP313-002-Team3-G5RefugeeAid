@@ -10,9 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SponsorDashboardActivity"></activity>
         <activity android:name=".MapActivity" />
-        <activity android:name=".RefugeeDashboardActivity" />
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".MainActivity">
