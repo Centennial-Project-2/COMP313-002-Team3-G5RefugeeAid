@@ -55,7 +55,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
-        android:text="Main Page"
+        android:text="Close Map"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
