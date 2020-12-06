@@ -7,16 +7,47 @@
     tools:context=".MapActivity">
 
 
+    <EditText
+        android:id="@+id/search_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/search_places"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <ImageButton
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:onClick="getGeoLocator"
+        android:src="@drawable/ic_search_"
+        app:layout_constraintBottom_toTopOf="@+id/map_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_txt"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--
+        <FrameLayout
+            android:id="@+id/map_fragment_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+         -->
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btnback"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_txt" />
 
     <Button
         android:id="@+id/btnback"

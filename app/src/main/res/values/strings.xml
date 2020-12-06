@@ -105,4 +105,5 @@
 
     <!--map api key-->
     <string name="maps_api_key">AIzaSyCxRwWYVMcDPHJI4XbzNjUGmaaZMgWyNN0</string>
+    <string name="search_places">Search Places</string>
 </resources>
