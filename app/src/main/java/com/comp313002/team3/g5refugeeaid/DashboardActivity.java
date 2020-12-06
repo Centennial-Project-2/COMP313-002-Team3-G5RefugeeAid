@@ -163,6 +163,10 @@ public class DashboardActivity extends BaseActivity implements  View.OnClickList
         if(v.getId() == R.id.btnSignOut){
             showCloseAlert();
         }
+        if(v.getId() == R.id.btnLocation){
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

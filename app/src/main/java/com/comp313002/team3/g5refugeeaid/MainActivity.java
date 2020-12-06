@@ -252,10 +252,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mAuth.addAuthStateListener(mAuthStateListener);
     }
 
-    public void vewMap(View view){
-        Intent intent = new Intent(this, MapActivity.class);
-        startActivity(intent);
-    }
 
 
 

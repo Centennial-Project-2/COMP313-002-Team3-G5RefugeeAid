@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.location.LocationManager;
 import android.media.audiofx.BassBoost;
 import android.os.Build;
@@ -41,11 +42,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.CancellationTokenSource;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.security.KeyStore;
 import java.util.List;
 import java.util.Locale;
+
+import static com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -57,9 +63,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public static final int GPS_REQUEST_CODE = 9003;
     private static final double TORONTO_LAT = 43.6535550755963;
     private static final double TORONTO_LNG = -79.3840760739025;
-
+    //The Fused Location Provider provides access to location APIs.
+    private FusedLocationProviderClient fusedLocationClient;
     //boolean properties
     private boolean mLocationPermissionGranted;
+    private final CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
 
     //PROPERTIES
@@ -80,7 +88,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment supportMapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
         supportMapFragment.getMapAsync(this);
-
+        fusedLocationClient = new FusedLocationProviderClient(this);
 
     }
 
@@ -90,6 +98,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mGoogleMap = map;
 
         goToLocation(TORONTO_LAT, TORONTO_LNG);
+
+        requestCurrentLocation();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
@@ -117,7 +127,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latLng, 15);
         mGoogleMap.animateCamera(cameraUpdate);
         //adding marker
-        MarkerOptions markerOptions = new MarkerOptions().title("Toronto").position(new LatLng(lat,lng));
+        MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(lat,lng));
         mGoogleMap.addMarker(markerOptions);
     }
 
@@ -375,7 +385,53 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
     }
 
+    private void requestCurrentLocation() {
+        Log.d(TAG, "requestCurrentLocation()");
+        // Request permission
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
 
+
+            // Main code
+            Task<Location> currentLocationTask = fusedLocationClient.getCurrentLocation(
+                    PRIORITY_HIGH_ACCURACY,
+                    cancellationTokenSource.getToken()
+            );
+
+            currentLocationTask.addOnCompleteListener((new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+
+                    String result = "";
+
+                    if (task.isSuccessful()) {
+                        // Task completed successfully
+                        Location location = task.getResult();
+                        goToLocation(location.getLatitude(), location.getLongitude());
+                        result = "Location (success): " +
+                                location.getLatitude() +
+                                ", " +
+                                location.getLongitude();
+                    } else {
+                        // Task failed with an exception
+                        Exception exception = task.getException();
+                        result = "Exception thrown: " + exception;
+                    }
+
+                    Log.d(TAG, "getCurrentLocation() result: " + result);
+                }
+            }));
+        } else {
+            // TODO: Request fine location permission
+            Log.d(TAG, "Request fine location permission.");
+        }
+    }
+
+    public void goBack(View v){
+        finish();
+    }
 
 
 
