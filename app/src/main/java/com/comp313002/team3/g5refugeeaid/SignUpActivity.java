@@ -13,8 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.comp313002.team3.g5refugeeaid.databinding.ActivitySignupBinding;
-import com.comp313002.team3.models.G5UserData;
-import com.comp313002.team3.models.UserType;
+import com.comp313002.team3.g5refugeeaid.models.G5UserData;
+import com.comp313002.team3.g5refugeeaid.models.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,13 +65,12 @@ public class SignUpActivity extends BaseActivity implements
 
     @Override
     public void onClick(View v) {
-        Intent intent;
+        Intent intent = new Intent(this, DashboardActivity.class);;
         int i = v.getId();
         if (i == R.id.btn_cancel) {
             finish();
         } else if (i == R.id.btn_Confirm) {
             // go to dashboard
-            intent = new Intent(this, DashboardActivity.class);
             if(fireBaseUser != null){
                 intent.putExtra("email", fireBaseUser.getEmail());
                 startActivity(intent);
